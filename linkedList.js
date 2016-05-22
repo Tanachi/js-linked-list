@@ -53,7 +53,6 @@ function linkedListGenerator(){
    if(head === null)
     return false;
   if(num === 0){
-    console.log(get(0));
     var zeal = head.next;
     head = zeal;
     head.next = zeal.next;
@@ -98,6 +97,62 @@ function linkedListGenerator(){
     return false;
   gogo.next = insert;
   insert.next = item;
+    return insert;
+ }
+
+ function insertAdd(value, num){
+  var insert = new node();
+  insert.value = value;
+  if(!num){
+    if(head === null){
+      head = insert;
+      head.next = tail;
+      tail = insert;
+    }
+    else{
+      tail.next = insert;
+      tail = insert;
+    }
+    return insert;
+  }
+  else{
+    if(num < 0)
+      return false;
+    if(num === 0){
+      insert.next = head;
+      head = insert;
+      return;
+    }
+    var item = head;
+    var gogo = null;
+
+    if(get(num) !== false){
+      item = get(num);
+      gogo = get(num - 1);
+    }
+    else
+      return false;
+    gogo.next = insert;
+    insert.next = item;
+   }
+ }
+ function getByValue(value){
+  var item = head;
+  while(item.next !== null){
+    if(item.value === value)
+      return item;
+    item = item.next;
+  }
+  return false;
+ }
+ function getByValue(value){
+  var item = head;
+  while(item.next !== null){
+    if(item.value === value)
+      return item;
+    item = item.next;
+  }
+  return false;
  }
 
   var list = {
@@ -106,7 +161,9 @@ function linkedListGenerator(){
     add:add,
     get:get,
     remove:remove,
-    insert:insert
+    insert:insert,
+    insertAdd:insertAdd,
+
   };
 
   return list;
