@@ -6,6 +6,7 @@
 function linkedListGenerator(){
   var head = null;
   var tail = null;
+  var length = 0;
   var Node = function() {
     this.value = null;
     this.next = null;
@@ -29,6 +30,7 @@ function linkedListGenerator(){
       tail.next = insert;
       tail = insert;
     }
+    length++;
     return insert;
   }
 
@@ -57,6 +59,7 @@ function linkedListGenerator(){
     if(num === 0){
       var zeal = head.next;
       head = zeal;
+      length--;
       return;
     }
     var item = null;
@@ -75,6 +78,7 @@ function linkedListGenerator(){
       gogo.next = item.next;
       item.next = null;
     }
+    length--;
   }
 
   function insert(value, num){
@@ -87,6 +91,7 @@ function linkedListGenerator(){
     if(num === 0){
       insert.next = head;
       head = insert;
+      length++;
       return;
     }
     var item = head;
@@ -100,6 +105,7 @@ function linkedListGenerator(){
       return false;
     gogo.next = insert;
     insert.next = item;
+    length++;
     return insert;
   }
 
@@ -117,6 +123,7 @@ function linkedListGenerator(){
       tail.next = insert;
       tail = insert;
     }
+    length++;
     return insert;
   }
   else{
@@ -125,6 +132,7 @@ function linkedListGenerator(){
     if(num === 0){
       insert.next = head;
       head = insert;
+      length++;
       return;
     }
     var item = head;
@@ -138,6 +146,7 @@ function linkedListGenerator(){
       return false;
     gogo.next = insert;
     insert.next = item;
+    length++;
    }
  }
 function getByValue(value){
@@ -177,6 +186,7 @@ function getByValue(value){
 
   gogo.next = insert;
   insert.next = item;
+  length++;
   return insert;
  }
 
@@ -201,6 +211,7 @@ function getByValue(value){
     var zeal = head.next;
     head = zeal;
     head.next = zeal.next;
+    length--;
     return;
   }
   var gogo = get(count - 1);
@@ -212,6 +223,7 @@ function getByValue(value){
      gogo.next = item.next;
      item.next = null;
    }
+   length--;
  }
   var list = {
     getHead:getHead,
