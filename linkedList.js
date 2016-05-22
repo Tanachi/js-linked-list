@@ -177,6 +177,38 @@ function getByValue(value){
  }
 
 
+ function deleteByValue(ID){
+  if(head === null)
+    return false;
+  var count = 0;
+  var item = head;
+  var found = false;
+  while(found === false && item.next !== null){
+    if(item.value === ID)
+      found = true;
+    else{
+      item = item.next;
+      count++;
+    }
+  }
+  if(found === false)
+    return false;
+  if(count === 0){
+    var zeal = head.next;
+    head = zeal;
+    head.next = zeal.next;
+    return;
+  }
+  var gogo = get(count - 1);
+   if(item === tail){
+     tail = gogo;
+     tail.next = null;
+   }
+   else{
+     gogo.next = item.next;
+     item.next = null;
+   }
+ }
   var list = {
     getHead:getHead,
     getTail:getTail,
@@ -187,6 +219,7 @@ function getByValue(value){
     insertAdd:insertAdd,
     getByValue:getByValue,
     insertByValue:insertByValue,
+    deleteByValue:deleteByValue
   };
 
   return list;
