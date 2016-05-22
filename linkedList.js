@@ -23,7 +23,6 @@ function linkedListGenerator(){
     insert.value = item;
     if(head === null){
       head = insert;
-      head.next = tail;
       tail = insert;
     }
     else{
@@ -58,7 +57,6 @@ function linkedListGenerator(){
     if(num === 0){
       var zeal = head.next;
       head = zeal;
-      head.next = zeal.next;
       return;
     }
     var item = null;
@@ -113,7 +111,6 @@ function linkedListGenerator(){
   if(!num){
     if(head === null){
       head = insert;
-      head.next = tail;
       tail = insert;
     }
     else{
