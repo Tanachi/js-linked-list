@@ -136,16 +136,7 @@ function linkedListGenerator(){
     insert.next = item;
    }
  }
- function getByValue(value){
-  var item = head;
-  while(item.next !== null){
-    if(item.value === value)
-      return item;
-    item = item.next;
-  }
-  return false;
- }
- function getByValue(value){
+function getByValue(value){
   var item = head;
   while(item.next !== null){
     if(item.value === value)
@@ -155,6 +146,7 @@ function linkedListGenerator(){
   return false;
  }
 
+
   var list = {
     getHead:getHead,
     getTail:getTail,
@@ -163,6 +155,7 @@ function linkedListGenerator(){
     remove:remove,
     insert:insert,
     insertAdd:insertAdd,
+    getByValue:getByValue,
 
   };
 
