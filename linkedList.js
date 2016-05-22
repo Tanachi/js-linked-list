@@ -145,6 +145,36 @@ function getByValue(value){
   }
   return false;
  }
+ function insertByValue(value, ID){
+  var insert = new node();
+  insert.value = value;
+  if(!ID)
+    return "No Value";
+  var count = 0;
+  var item = head;
+  var found = false;
+  while(found === false && item.next !== null){
+    if(item.value === ID){
+      found = true;
+    }
+    else{
+      item = item.next;
+      count++;
+    }
+  }
+  if(found === false)
+    return false;
+  if(count === 0){
+    insert.next = head;
+    head = insert;
+    return;
+  }
+  var gogo = get(count - 1);
+
+  gogo.next = insert;
+  insert.next = item;
+  return insert;
+ }
 
 
   var list = {
@@ -156,7 +186,7 @@ function getByValue(value){
     insert:insert,
     insertAdd:insertAdd,
     getByValue:getByValue,
-
+    insertByValue:insertByValue,
   };
 
   return list;
