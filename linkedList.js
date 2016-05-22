@@ -11,16 +11,16 @@ function linkedListGenerator(){
     this.next = null;
   };
 
- function getHead(){
-  return head;
- }
- function getTail(){
-  return tail;
- }
+  function getHead(){
+    return head;
+  }
+  function getTail(){
+    return tail;
+  }
 
- function add(item){
-  var insert = new Node();
-  insert.value = item;
+  function add(item){
+    var insert = new Node();
+    insert.value = item;
     if(head === null){
       head = insert;
       head.next = tail;
@@ -31,10 +31,11 @@ function linkedListGenerator(){
       tail = insert;
     }
     return insert;
- }
+  }
 
   function get(num){
-
+  if(isNaN(num) || num < 0)
+    return false;
   if(num === 0)
     return head;
   var item = head;
@@ -47,60 +48,66 @@ function linkedListGenerator(){
       return false;
   }
   return item;
- }
+  }
 
   function remove(num){
-   if(head === null)
-    return false;
-  if(num === 0){
-    var zeal = head.next;
-    head = zeal;
-    head.next = zeal.next;
-    return;
+    if(isNaN(num) || num < 0)
+      return false;
+    if(head === null)
+      return false;
+    if(num === 0){
+      var zeal = head.next;
+      head = zeal;
+      head.next = zeal.next;
+      return;
+    }
+    var item = null;
+    var gogo = null;
+    if(get(num) !== false){
+      item = get(num);
+      gogo = get(num - 1);
+    }
+    else
+      return false;
+    if(item === tail){
+      tail = gogo;
+      tail.next = null;
+    }
+    else{
+      gogo.next = item.next;
+      item.next = null;
+    }
   }
-   var item = null;
-     var gogo = null;
-   if(get(num) !== false){
-    item = get(num);
-    gogo = get(num - 1);
-   }
-   else
-    return false;
-   if(item === tail){
-     tail = gogo;
-     tail.next = null;
-   }
-   else{
-     gogo.next = item.next;
-     item.next = null;
-   }
- }
 
- function insert(value, num){
-  var insert = new Node();
-  insert.value = value;
-  if(num < 0)
-    return false;
-  if(num === 0){
-    insert.next = head;
-    head = insert;
-    return;
-  }
-  var item = head;
-  var gogo = null;
+  function insert(value, num){
+    if(isNaN(num) || num < 0)
+      return false;
+    var insert = new Node();
+    insert.value = value;
+    if(num < 0)
+      return false;
+    if(num === 0){
+      insert.next = head;
+      head = insert;
+      return;
+    }
+    var item = head;
+    var gogo = null;
 
-   if(get(num) !== false){
-    item = get(num);
-    gogo = get(num - 1);
-   }
-   else
-    return false;
-  gogo.next = insert;
-  insert.next = item;
+    if(get(num) !== false){
+      item = get(num);
+      gogo = get(num - 1);
+    }
+    else
+      return false;
+    gogo.next = insert;
+    insert.next = item;
     return insert;
- }
+  }
 
  function insertAdd(value, num){
+  if(isNaN(num) || num < 0)
+      return false;
   var insert = new Node();
   insert.value = value;
   if(!num){
