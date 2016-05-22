@@ -6,7 +6,7 @@
 function linkedListGenerator(){
   var head = null;
   var tail = null;
-  var node = function() {
+  var Node = function() {
     this.value = null;
     this.next = null;
   };
@@ -19,7 +19,7 @@ function linkedListGenerator(){
  }
 
  function add(item){
-  var insert = new node();
+  var insert = new Node();
   insert.value = item;
     if(head === null){
       head = insert;
@@ -77,7 +77,7 @@ function linkedListGenerator(){
  }
 
  function insert(value, num){
-  var insert = new node();
+  var insert = new Node();
   insert.value = value;
   if(num < 0)
     return false;
@@ -101,7 +101,7 @@ function linkedListGenerator(){
  }
 
  function insertAdd(value, num){
-  var insert = new node();
+  var insert = new Node();
   insert.value = value;
   if(!num){
     if(head === null){
@@ -146,7 +146,7 @@ function getByValue(value){
   return false;
  }
  function insertByValue(value, ID){
-  var insert = new node();
+  var insert = new Node();
   insert.value = value;
   if(!ID)
     return "No Value";
